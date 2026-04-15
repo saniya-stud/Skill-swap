@@ -1,0 +1,104 @@
+/* styles.css - SkillSwap Premium */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* View Switcher Engine */
+.view-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.35s ease-out;
+}
+
+.view-section.active {
+    display: block; 
+    opacity: 1;
+}
+
+#login-page.active {
+    display: flex;
+}
+
+/* Custom Hide Scrollbar for Horizontal Netflix Scroll */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Horizontal Snap Behavior */
+.htmx-scroll-snap {
+    scroll-snap-type: x mandatory;
+}
+
+.htmx-scroll-snap > div {
+    scroll-snap-align: center;
+}
+
+@media (min-width: 640px) {
+    .htmx-scroll-snap > div {
+        scroll-snap-align: start;
+    }
+}
+
+/* Base Card Transition Utilities */
+.hover\:scale-105 {
+    transition-property: transform, box-shadow, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover\:scale-105:hover {
+    transform: scale(1.05);
+}
+
+/* Reusable Animations */
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUpFade 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+    }
+    to { 
+        opacity: 1; 
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Stagger Helpers */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+
+/* Pulse animation fix for Tailwind CDN */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+}
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
